@@ -1,7 +1,7 @@
 # COVID-19-ON-model
 This repository is currently under construction.
 
-Simulation, model-fitting and visuzlation code for manuscript by Fair, Karatayev, Anand, and Bauch (2021).
+Simulation, model-fitting and visualization code for manuscript by Fair, Karatayev, Anand, and Bauch (2021).
 
 covidHierData.rds contains the following objects (note that some are artefacts of a previous version of the model retained within the file to preseve the dimensions of certain data structures - these are denoted with an asterisk):
 
