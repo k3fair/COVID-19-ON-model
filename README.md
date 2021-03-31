@@ -7,7 +7,7 @@ covidHierData.rds contains the following objects (note that some are artefacts o
 
 • Distd50*: the proportion of people voluntarily distancing by day 21 of the outbreak, data from https://news.gallup.com/opinion/gallup/298310/americans-step-social-distancing-even-further.aspx
 
-• testRat*: estimate of the ratio of true infections to positive tests made by A Lachmann, Correcting under-reported covid-19 case numbers. medRxiv (2020).
+• testRat: estimate of the ratio of true infections to positive tests made by A Lachmann, Correcting under-reported covid-19 case numbers. medRxiv (2020).
 
 • Msave: Travel matrix, where entries are numbers of commuters between a home and workplace county. Data from Statistics canada, 2016 census, catalogue no. 98-400-x2016391.
 
