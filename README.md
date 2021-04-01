@@ -2,13 +2,13 @@
 
 **Note:** This repository is currently under construction.
 
-Simulation, model-fitting and visualization code for manuscript by Fair, Karatayev, Anand, and Bauch (2021). All data needed to run simulations are included in the "InputFiles" folder.
+Simulation and model-fitting code for manuscript by Fair, Karatayev, Anand, and Bauch (2021). All data needed to run simulations are included in the "InputFiles" folder. 
 
 **Scripts**
 
-* covidHierV46_2Github_parmfit.R runs fitting procedure for obtaining parameter sets.
+* covidHierV46_2Github_parmfit.R runs fitting procedure for obtaining parameter sets, outputs files containing the best parameter set as determined by that run of the fitting algorithms.
 
-* covidHierV46_2Github_basesim.R evaluates output from covidHierV46_2Github_parmfit.R to identify parameter sets resulting in the best fit to data, runs simulations using those parameter sets.
+* covidHierV46_2Github_basesim.R evaluates output from covidHierV46_2Github_parmfit.R to identify parameter sets resulting in the best fit to data, runs simulations using those parameter sets, and outputs files containing the results of that identification and simulation.
 
 * covidHierV46_2Github_firstcounterfactual.R runs simulations for counterfactuals covering the first time period (10 March 2020 to 15 August 2020).
 
