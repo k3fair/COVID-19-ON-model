@@ -16,7 +16,6 @@
 
 library(abind); library(plyr); library(tidyverse); library(beepr);
 
-setwd("C:/Users/jogad/OneDrive - University of Waterloo/S20/CovidModelling/OntarioProj/COVID-19-Hierarchy-model-master/SharcnetSims/")
 DATA=readRDS("covidHierData.rds"); #See readme file for description of contents
 cmat=readRDS("cmat_data_weighted.rds");
 regionid=readRDS("PHUtoREGIONlinker_numeric.rds");
@@ -34,7 +33,7 @@ tstart<-Sys.time()
 #Set name of model version for naming of output files
 codeselect<-"v46v2phuNUDGE"
 
-path = "C:/Users/jogad/OneDrive - University of Waterloo/S20/CovidModelling/OntarioProj/COVID-19-Hierarchy-model-master/SharcnetSims/Parmfit_v46/"
+path = getwd() #Set to wherever output files from fitting are saved
 #Find all output files from parameter fitting
 file.names <- dir(path, pattern =sprintf("parmfit_y_%s_", codeselect), full.names=TRUE)
 file.names.x <- dir(path, pattern =sprintf("parmfit_x_%s_", codeselect), full.names=TRUE)
@@ -62,7 +61,7 @@ for (fit in 1:length(file.names))
     #Msave is the travel matrix. Here Msave entries are numbers of commuters; msim3 converts them to proportions
     pops=colSums(DATA$Msave)
     
-    ###Adjust to 2020 Q4 pop estimate (from https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901)
+    ###Adjust to 2020 Q4 pop estimate (from https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901), as region pop estimates are from 2016 census
     pop2020<-14733119
     popratio<-pop2020/sum(pops)
     

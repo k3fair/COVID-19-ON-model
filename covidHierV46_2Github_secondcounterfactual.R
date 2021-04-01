@@ -15,11 +15,9 @@
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 library(abind); library(plyr);  library(dplyr); library(data.table);
-setwd("C:/Users/jogad/OneDrive - University of Waterloo/S20/CovidModelling/OntarioProj/COVID-19-Hierarchy-model-master/SharcnetSims/")
 # Suppress summarise info
 options(dplyr.summarise.inform = FALSE)
 
-setwd("C:/Users/jogad/OneDrive - University of Waterloo/S20/CovidModelling/OntarioProj/COVID-19-Hierarchy-model-master/SharcnetSims/")
 DATA=readRDS("covidHierData.rds"); #See readme file for description of contents
 cmat=readRDS("cmat_data_weighted.rds");
 regionid=readRDS("PHUtoREGIONlinker_numeric.rds");
@@ -71,7 +69,7 @@ for (fit in 1:topnum) {
   #Msave is the travel matrix. Here Msave entries are numbers of commuters; msim3 converts them to proportionsns
   pops=colSums(DATA$Msave)
   
-  ###Adjust to 2020 Q4 pop estimate (from https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901)
+  ###Adjust to 2020 Q4 pop estimate (from https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901), as region pop estimates are from 2016 census
   pop2020<-14733119
   popratio<-pop2020/sum(pops)
   
@@ -385,7 +383,7 @@ for (fit in 1:topnum) {
       propCits=t(TS[,"Nt",]); states=t(apply(TS,c(2,3),sum)); return(cbind(states,omgs,propCits)); }
   }
 
-rocoeff.list<-c(0,1,10);
+rocoeff.list<-c(0,1,10); #values correspond to scenarios where there are no NPIs in schools/workplaces (0), there are NPIs in schools/workplaces (1), and schools/workplaces do not reopen (10)
 base.reopen_w<-parms[,c("reopen_w")]
 base.reopen_s<-parms[,c("reopen_s")]
 

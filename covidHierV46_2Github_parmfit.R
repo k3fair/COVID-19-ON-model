@@ -42,7 +42,7 @@ codeversion<-"v46v2phuNUDGE"
 #Msave is the travel matrix. Here Msave entries are numbers of commuters; msim3 converts them to proportions
 pops=colSums(DATA$Msave)
 
-###Adjust to 2020 Q4 pop estimate from Statstics Canada (from https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901)
+###Adjust to 2020 Q4 pop estimate from Statstics Canada (from https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901), as region pop estimates are from 2016 census
 pop2020<-14733119
 popratio<-pop2020/sum(pops)
 

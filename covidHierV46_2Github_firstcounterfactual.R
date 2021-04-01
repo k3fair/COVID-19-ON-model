@@ -18,7 +18,6 @@ library(abind); library(plyr);  library(dplyr); library(data.table);
 # Suppress summarise info
 options(dplyr.summarise.inform = FALSE)
 
-setwd("C:/Users/jogad/OneDrive - University of Waterloo/S20/CovidModelling/OntarioProj/COVID-19-Hierarchy-model-master/SharcnetSims/")
 DATA=readRDS("covidHierData.rds"); #See readme file for description of contents
 cmat=readRDS("cmat_data_weighted.rds");
 regionid=readRDS("PHUtoREGIONlinker_numeric.rds");
@@ -36,6 +35,7 @@ regiondat<-regiondat[regiondat$Date<="2021-02-28",]
 #Set code version
 codeversion<-"v46v2phuNUDGE"
 
+### Choose scenario to simulate
 # Set closure counterfactual type i.e. schools remain open ("schoolopen"), workplaces remain open ("workopen"), both remain open ("bothopen") or both are shut ("neitheropen", corresponds to what actually occured in the province)
 # Set reopening type; with ("restricted") or without ("unrestricted") NPIs in schools/workplaces
 # Set individual NPI adherence counterfactual type i.e. no individual adherence to NPIs ("vdOFF") or individual adherence to NPIs in response to case numbers ("vdON")
@@ -71,7 +71,7 @@ for (fit in 1:topnum) {
   #Msave is the travel matrix. Here Msave entries are numbers of commuters; msim3 converts them to proportions
   pops=colSums(DATA$Msave)
   
-  ###Adjust to 2020 Q4 pop estimate (from https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901)
+  ###Adjust to 2020 Q4 pop estimate (from https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901), as region pop estimates are from 2016 census
   pop2020<-14733119
   popratio<-pop2020/sum(pops)
   

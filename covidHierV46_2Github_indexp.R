@@ -18,7 +18,6 @@ library(abind); library(plyr); library(dplyr); library(data.table);
 # Suppress summarise info
 options(dplyr.summarise.inform = FALSE)
 
-#setwd("C:/Users/jogad/OneDrive - University of Waterloo/S20/CovidModelling/OntarioProj/COVID-19-Hierarchy-model-master/SharcnetSims/")
 DATA=readRDS("covidHierData.rds"); #See readme file for description of contents
 cmat=readRDS("cmat_data_weighted.rds");
 regionid=readRDS("PHUtoREGIONlinker_numeric.rds");
@@ -52,7 +51,7 @@ fitparms<- fitparms0[fitparms0$fit %in% checker$fit,]
 
 tstart<-Sys.time()
 
-#args takes commandline argument for which 2% band for % of population who are non-compliant with NPIs to consider 
+#args takes commandline argument for which 2% band for % of population who are not adhering NPIs to consider 
 #can expand size of band but output data frame size may become prohibitively large, depending on user's RAM
 #can be replaced by args <- "value in [0.01,1]" to run w/o command line (e.g. args<-50 will run simulations with 49,50% of population non-compliant)
 args <- 50; #commandArgs(trailingOnly = TRUE)
@@ -73,7 +72,7 @@ for (fit in 1:topnum) {
   #Msave is the travel matrix. Here Msave entries are numbers of commuters; msim3 converts them to proportions
 pops=colSums(DATA$Msave)
 
-###Adjust to 2020 Q4 pop estimate (from https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901)
+###Adjust to 2020 Q4 pop estimate (from https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901), as region pop estimates are from 2016 census
 pop2020<-14733119
 popratio<-pop2020/sum(pops)
 
