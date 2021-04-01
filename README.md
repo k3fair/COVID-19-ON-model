@@ -55,4 +55,4 @@ Simulation, model-fitting and visualization code for manuscript by Fair, Karatay
 
  * R Version 4.0.3 https://www.r-project.org/
 
- * R Studio Version 1.2.5019 (IDE for R) https://rstudio.com/
+ * R Studio Version 1.2.5019 (IDE for R) https://rstudio.com/ 
