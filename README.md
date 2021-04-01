@@ -46,9 +46,11 @@ Simulation, model-fitting and visualization code for manuscript by Fair, Karatay
   * CountyPopDensities*: population densities in each county (data from https://www12.statcan.gc.ca/health-sante/82-228/details/page.cfm?Lang=E&Tab=1&Geo1=HR&Code1=3570&Geo2=PR&Code2=35&Data=Rate&SearchText=York%20Regional%20Health%20Unit&SearchType=Contains&SearchPR=01&B1=All&Custom=&B2=All&B3=All)
 
 **System & hardware requirements**
+
 Windows 10 Pro Version 2004
 Sufficient RAM to support storage of data structures during simulations
 
 **Installation guide**
+
 R Version 4.0.3 https://www.r-project.org/
 R Studio Version 1.2.5019 (IDE for R) https://rstudio.com/
