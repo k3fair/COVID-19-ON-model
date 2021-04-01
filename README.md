@@ -1,9 +1,12 @@
 # COVID-19-ON-model
-This repository is currently under construction.
+
+**Note:** This repository is currently under construction.
 
 Simulation, model-fitting and visualization code for manuscript by Fair, Karatayev, Anand, and Bauch (2021).
 
 All data needed to run simulations are included in the "InputFiles" folder.
+
+**Input Files**
 
 cmat_data_weighted.rds contains contact matrices; data adapted from https://github.com/kieshaprem/synthetic-contact-matrices
 
