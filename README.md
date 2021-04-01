@@ -2,7 +2,9 @@
 
 **Note:** This repository is currently under construction.
 
-Simulation and model-fitting code for manuscript by Fair, Karatayev, Anand, and Bauch (2021). All data needed to run simulations are included in the "InputFiles" folder. 
+Simulation and model-fitting code for manuscript by Fair, Karatayev, Anand, and Bauch (2021). 
+
+All data needed to run scripts are included in the "InputFiles" folder, with the exception of the parameter set inputs for covidHierV46_2Github_basesim.R, as the large number of files makes this infeasible. However, such parameter sets can be generated using covidHierV46_2Github_parmfit.R. Expected runtime varies between scripts.
 
 **Scripts**
 
