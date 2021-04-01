@@ -2,21 +2,32 @@
 
 **Note:** This repository is currently under construction.
 
-Simulation, model-fitting and visualization code for manuscript by Fair, Karatayev, Anand, and Bauch (2021).
+Simulation, model-fitting and visualization code for manuscript by Fair, Karatayev, Anand, and Bauch (2021). All data needed to run simulations are included in the "InputFiles" folder.
 
-All data needed to run simulations are included in the "InputFiles" folder.
+**Scripts**
+
+covidHierV46_2Github_parmfit.R runs fitting procedure for obtaining parameter sets.
+
+covidHierV46_2Github_basesim.R evaluates output from covidHierV46_2Github_parmfit.R to identify parameter sets resulting in the best fit to data, runs simulations using those parameter sets.
+
+covidHierV46_2Github_firstcounterfactual.R runs simulations for counterfactuals covering the first time period (10 March 2020 to 15 August 2020).
+
+covidHierV46_2Github_secondcounterfactual.R runs simulations for counterfactuals covering the second time period (12 June 2020 to 28 February 2021).
+
+covidHierV46_2Github_indexp.R runs simulations for our model extension to consider individual-level NPI adherence during first time period (10 March 2020 to 15 August 2020). 
+
 
 **Input Files**
 
 cmat_data_weighted.rds contains contact matrices; data adapted from https://github.com/kieshaprem/synthetic-contact-matrices
 
-PHUtoREGIONlinker_numeric.rds contains a key for linking Ontario's census divisions (regions) to the Public Health Units (PHU) they belong to
+PHUtoREGIONlinker_numeric.rds contains a key for linking Ontario's census divisions (regions) to the Public Health Units (PHU) they belong to.
 
-Ondat_newKage_to2021-03-02.rds contains data on new reported COVID-19 cases in Ontario, grouped by age-class (data from https://covid-19.ontario.ca/data)
+Ondat_newKage_to2021-03-02.rds contains data on new reported COVID-19 cases in Ontario, grouped by age-class (data from https://covid-19.ontario.ca/data).
 
-ONdat_casesbyPHU_to2021-03-01.rs contains data on new reported COVID-19 cases in Ontario, grouped by PHU (data from https://covid-19.ontario.ca/data)
+ONdat_casesbyPHU_to2021-03-01.rs contains data on new reported COVID-19 cases in Ontario, grouped by PHU (data from https://covid-19.ontario.ca/data).
 
-mobilitydat-REAL_to2021-02-27_v4.rds contains data on mobility trends for retail and recreational locations (adapted from https://www.google.com/covid19/mobility/)
+mobilitydat-REAL_to2021-02-27_v4.rds contains data on mobility trends for retail and recreational locations (adapted from https://www.google.com/covid19/mobility/).
 
 covidHierData.rds contains the following objects (note that some are artefacts of a previous version of the model retained within the file to preseve the dimensions of certain data structures - these are denoted with an asterisk):
 
