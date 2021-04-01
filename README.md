@@ -19,6 +19,8 @@ Simulation, model-fitting and visualization code for manuscript by Fair, Karatay
 
 **Input Files**
 
+* simsFITPARMS_v46v2phuNUDGE_V2.rds contains best-fit parameter sets (generated from covidHierV46_2Github_parmfit.R and covidHierV46_2Github_basesim.R), used for all counterfactual simulations
+
 * cmat_data_weighted.rds contains contact matrices; data adapted from https://github.com/kieshaprem/synthetic-contact-matrices
 
 * PHUtoREGIONlinker_numeric.rds contains a key for linking Ontario's census divisions (regions) to the Public Health Units (PHU) they belong to.
