@@ -26,7 +26,7 @@ DATA=readRDS("covidHierData.rds"); #See readme file for description of contents
 pops=colSums(DATA$Msave)
 
 #Read in empircal data for comparison
-rw.ind.0<-read.csv("conposcovidloc_mar32021.csv", na.strings=c(""," ","NA"))
+rw.ind.0<-read.csv("conposcovidloc_mar32021_simple.csv", na.strings=c(""," ","NA"))
 rw.tots<-read.csv("covidtesting_mar32021.csv")
 
 #Drop all dates where totals are impacted by reporting lags

@@ -31,7 +31,7 @@ if (exists('rw.weekly')==FALSE) #Skips running this data collating step if alrea
 {
   
   #Read in empircal data for comparison
-  rw.ind.0<-read.csv("conposcovidloc_mar32021_simple.csv", na.strings=c(""," ","NA"))
+  rw.ind.0<-read.csv("conposcovidloc_mar32021.csv", na.strings=c(""," ","NA"))
   rw.tots<-read.csv("covidtesting_mar32021.csv")
   
   #Drop all dates in "grey" period where there may be reporting lags, etc
@@ -205,6 +205,17 @@ if(exists('df.model.sum.comb')==FALSE || (exists('df.model.sum.comb')==TRUE & di
       simdeath.comb<-rbind(simdeath.comb, simdeath)
     }
 
+    #Uncomment to save a selection of timeseries data
+    # if (any(round(simdata$cperc,2) %in% round(seq(0,1,0.1),2))) {
+    #   if (exists('df.ts.save')==FALSE) {
+    #     df.ts.save<-simdata[round(simdata$cperc,2) %in% round(seq(0,1,0.1),2),]
+    #   } else {
+    #     df.ts.save<-rbind(df.ts.save,simdata[round(simdata$cperc,2) %in% round(seq(0,1,0.1),2),])
+    #   }
+    # 
+    #   print(unique(df.ts.save$cperc))
+    # }
+
     print(fpick/length(fitparms.file.names))
   }
 
@@ -214,6 +225,7 @@ if(exists('df.model.sum.comb')==FALSE || (exists('df.model.sum.comb')==TRUE & di
 df.sum.rw<-data.frame(ageclass=c(1,2,3,4,5, NA), rw.known=c(sum(rw.agg$newcases[(rw.agg$Date<=limselect[2] & rw.agg$Date>=limselect[1] & rw.agg$ageclass==1)], na.rm = TRUE),sum(rw.agg$newcases[(rw.agg$Date<=limselect[2] & rw.agg$Date>=limselect[1] & rw.agg$ageclass==2)], na.rm = TRUE),sum(rw.agg$newcases[(rw.agg$Date<=limselect[2] & rw.agg$Date>=limselect[1] & rw.agg$ageclass==3)], na.rm = TRUE),sum(rw.agg$newcases[(rw.agg$Date<=limselect[2] & rw.agg$Date>=limselect[1] & rw.agg$ageclass==4)], na.rm = TRUE),sum(rw.agg$newcases[(rw.agg$Date<=limselect[2] & rw.agg$Date>=limselect[1] & rw.agg$ageclass==5)], na.rm = TRUE), 0),
                       rw.deaths=c(0,0,0,0,0,rw.hosp.fit$Deaths[(rw.hosp.fit$Date==limselect[2] & is.na(rw.hosp.fit$Date)==FALSE)]))
 
+#saveRDS(df.ts.save, file = sprintf("dfIND_sum_ts_save_to%s_v2.rds", limselect[2]))
 saveRDS(df.sum.rw, file = sprintf("dfIND_sum_rw_to%s_v2.rds", limselect[2]))
 saveRDS(df.model.sum.comb, file = sprintf("dfIND_model_sum_comb_to%s_v2.rds", limselect[2]))
 saveRDS(simdeath.comb, file = sprintf("dfIND_model_simdeath_to%s_v2.rds", limselect[2]))
@@ -222,6 +234,7 @@ saveRDS(simdeath.comb, file = sprintf("dfIND_model_simdeath_to%s_v2.rds", limsel
 ### Viz
 limselect<-c(as.Date("2020-03-10"), as.Date("2020-08-15")); dbreak<-"1 month";
 
+#df.ts.save = readRDS("dfIND_sum_ts_save_to2020-08-15_v2.rds")
 df.sum.rw = readRDS("dfIND_sum_rw_to2020-08-15_v2.rds");
 df.model.sum.comb = readRDS("dfIND_model_sum_comb_to2020-08-15_v2.rds");
 simdeath.comb = readRDS("dfIND_model_simdeath_to2020-08-15_v2.rds");
@@ -249,7 +262,13 @@ df.model.sum.comb<-df.model.sum.comb %>% group_by(fit, run) %>% arrange(fit, run
 rw.weekly<-rw.weekly[(rw.weekly$week>=limselect[1] & rw.weekly$week<=limselect[2]),]
 
 
+df.ts <- df.ts.save[(df.ts.save$Date>=limselect[1] & df.ts.save$Date<=limselect[2]),] %>% group_by(fit, run, cperc, ts50) %>% dplyr::summarise(model.sick=sum(new.sick, na.rm=TRUE), model.known=sum(new.K, na.rm=TRUE))
+
+rm("df.ts.save"); #Get rid, due to large file size
+
+
 df.dates.big<-data.frame(Date=(seq(as.Date("2019-06-01"), as.Date("2021-01-31"), by = "days")), ts50=1:length(seq(as.Date("2019-06-01"), as.Date("2021-01-31"), by = "days")) - length(seq(as.Date("2019-06-01"),rw.agg$Date[min(which(cumsum(rw.agg$newcases)>=50))], by="days")))
+if("Date" %notin% colnames(df.ts)) {df.ts<-merge(df.ts, df.dates.big, by="ts50", all.x=T, all.y=F)}
 if("Date" %notin% colnames(rw.hosp.fit)) {rw.hosp.fit<-merge(rw.hosp.fit, df.dates.big, by="ts50", all.x=T, all.y=F)}
 
 #Drop all dates in "grey" period where there may be reporting lags, etc
@@ -257,6 +276,50 @@ rw.agg<-rw.agg[rw.agg$Date<=as.Date("2021-02-28"),]
 rw.hosp.fit<-rw.hosp.fit[rw.hosp.fit$Date<=as.Date("2021-02-28"),]
 
 custom.pal<- c("black",(brewer.pal(4,"RdBu")))
+
+p.known.ts<- ggplot() +
+  geom_line(data=df.ts[(df.ts$cperc>=0.4 & df.ts$cperc<=0.7),], aes(x=Date, y=model.known, group=interaction(cperc, fit, run), colour=as.factor(100*(cperc))), alpha=0.1) +
+  stat_summary( data=df.ts[(df.ts$cperc>=0.4 & df.ts$cperc<=0.7),], aes(x=Date, y=model.known, group=interaction(cperc), colour=as.factor(100*(cperc))), fun = median, geom="line", size=0.75) +
+  scale_color_manual("Scenario", values=custom.pal[-1], guide = guide_legend(order = 2), labels=c("40% of individuals adhering to NPIs", "50% of individuals adhering to NPIs", "60% of individuals adhering to NPIs", "70% of individuals adhering to NPIs")) +
+  new_scale_color() +
+  geom_line(data=rw.agg.fit, aes(x=Date, y=new.K, colour=as.factor("Actual") ), size=0.75) +
+  scale_color_manual("", values=custom.pal[1], guide = guide_legend(order = 1)) +
+  xlab("Date") +
+  ylab("New confirmed cases") +
+  scale_x_date(expand = c(0,0), date_breaks = dbreak, limits=c(limselect[1], limselect[2]), date_labels = "%b '%y") +
+  scale_y_continuous(labels=comma, expand=c(0.01,0)) +
+  coord_cartesian(ylim=c(0,2500))+
+  theme_light()
+
+
+p.death.weekly.ts.best<-ggplot() +
+  geom_line(data=simdeath.comb[(round(simdeath.comb$cperc,2) %in% c(0.4,0.5,0.6,0.7)),], aes(x=week, y=weekly.deaths.best, group=interaction(run,fit,cperc), colour=as.factor(100*(cperc))), alpha=0.1) +
+  stat_summary(data=simdeath.comb[(round(simdeath.comb$cperc,2) %in% c(0.4,0.5,0.6,0.7)),], aes(x=week, y=weekly.deaths.best, group=interaction(cperc), colour=as.factor(100*(cperc))), fun=median,geom="line", size=0.75) +
+  scale_color_manual("Scenario", values=custom.pal[-1], guide = guide_legend(order = 2), labels=c("40% of individuals adhering to NPIs", "50% of individuals adhering to NPIs", "60% of individuals adhering to NPIs", "70% of individuals adhering to NPIs")) +
+  new_scale_color() +
+  geom_line(data=rw.weekly, aes(x=week, y=newdeaths.weekly.actual, colour="Actual"), size=0.75) +
+  scale_color_manual("", values=custom.pal[1], guide = guide_legend(order = 1)) +
+  xlab("Date") +
+  ylab("Weekly deaths") +
+  scale_x_date(expand = c(0,0), limits=limselect, date_breaks = dbreak, date_labels = "%b '%y") +
+  scale_y_continuous(labels=comma, expand=c(0.01,0), limits=c(0,3000)) +
+  theme_light()+
+  ggtitle("Best-case scenario")
+
+
+p.death.weekly.ts.worst<-ggplot() +
+  geom_line(data=simdeath.comb[(round(simdeath.comb$cperc,2) %in% c(0.4,0.5,0.6,0.7)),], aes(x=week, y=weekly.deaths.worst, group=interaction(run,fit,cperc), colour=as.factor(100*(cperc))), alpha=0.1) +
+  stat_summary(data=simdeath.comb[(round(simdeath.comb$cperc,2) %in% c(0.4,0.5,0.6,0.7)),], aes(x=week, y=weekly.deaths.worst, group=interaction(cperc), colour=as.factor(100*(cperc))), fun=median,geom="line", size=0.75) +
+  scale_color_manual("Scenario", values=custom.pal[-1], guide = guide_legend(order = 2), labels=c("40% of individuals adhering to NPIs", "50% of individuals adhering to NPIs", "60% of individuals adhering to NPIs", "70% of individuals adhering to NPIs")) +
+  new_scale_color() +
+  geom_line(data=rw.weekly, aes(x=week, y=newdeaths.weekly.actual, colour="Actual"), size=0.75) +
+  scale_color_manual("", values=custom.pal[1], guide = guide_legend(order = 1)) +
+  xlab("Date") +
+  ylab("Weekly deaths, CFR=f(cases)") +
+  scale_x_date(expand = c(0,0), limits=limselect, date_breaks = dbreak, date_labels = "%b '%y") +
+  scale_y_continuous(labels=comma, expand=c(0.01,0), limits=c(0,3000)) +
+  theme_light()+
+  ggtitle("Worst-case scenario")
 
 psize<-0.025
 lsize<-0.75
@@ -379,6 +442,16 @@ p.comb.totals<-p.known + p.death.weekly.best + p.death.weekly.worst +
   theme(legend.position = 'bottom',  legend.margin = margin(0, 0, 0, -5, "pt"), plot.margin = margin(0, 7, 2, 0, "pt"))
 
 
-png("Plot_IndividualExperiment_si_v2.png", width=29.25, height=12.5, units="cm", res=500)
+png("Plot_IndividualExperiment_si1_v2.png", width=29.25, height=12.5, units="cm", res=500)
 print(p.comb.totals)
 dev.off()
+
+p.comb.ts<-p.known.ts + guide_area()  + p.death.weekly.ts.best + theme(legend.position="none") + p.death.weekly.ts.worst  + theme(legend.position="none") +
+  plot_layout(guides = 'collect') +
+  plot_annotation(tag_levels = 'a') &
+  theme(legend.margin = margin(0, 0, 0, -5, "pt"), plot.margin = margin(0, 7, 2, 0, "pt"))
+
+png("Plot_IndividualExperiment_si2_v2.png", width=22.5, height=22.5, units="cm", res=500)
+print(p.comb.ts)
+dev.off()
+

@@ -27,7 +27,7 @@ if (exists('mobilitydat')==FALSE) #Skips running this step if has already been d
   pops=colSums(DATA$Msave)
   
   #Read in empircal data for comparison
-  rw.ind.0<-read.csv("conposcovidloc_mar32021.csv", na.strings=c(""," ","NA"))
+  rw.ind.0<-read.csv("conposcovidloc_mar32021_simple.csv", na.strings=c(""," ","NA"))
   rw.tots<-read.csv("covidtesting_mar32021.csv")
   
   #Drop all dates in "grey" period where there may be reporting lags, etc
