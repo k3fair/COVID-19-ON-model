@@ -12,9 +12,9 @@ Simulation, model-fitting and visualization code for manuscript by Fair, Karatay
 
 * covidHierV46_2Github_firstcounterfactual.R runs simulations for counterfactuals covering the first time period (10 March 2020 to 15 August 2020).
 
-covidHierV46_2Github_secondcounterfactual.R runs simulations for counterfactuals covering the second time period (12 June 2020 to 28 February 2021).
+* covidHierV46_2Github_secondcounterfactual.R runs simulations for counterfactuals covering the second time period (12 June 2020 to 28 February 2021).
 
-covidHierV46_2Github_indexp.R runs simulations for our model extension to consider individual-level NPI adherence during first time period (10 March 2020 to 15 August 2020). 
+* covidHierV46_2Github_indexp.R runs simulations for our model extension to consider individual-level NPI adherence during first time period (10 March 2020 to 15 August 2020). 
 
 
 **Input Files**
