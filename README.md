@@ -55,7 +55,7 @@ All data needed to run scripts are included in the "InputFiles" folder, with the
 
  * Sufficient RAM to support storage of data structures during simulations
 
-**Installation guide**
+**Installation guides**
 
  * R Version 4.0.3 https://www.r-project.org/
 
