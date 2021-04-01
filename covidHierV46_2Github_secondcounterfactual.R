@@ -21,11 +21,9 @@ options(dplyr.summarise.inform = FALSE)
 DATA=readRDS("covidHierData.rds"); #See readme file for description of contents
 cmat=readRDS("cmat_data_weighted.rds");
 regionid=readRDS("PHUtoREGIONlinker_numeric.rds");
-# bdat=readRDS("storeSatIncTrm.65_Mfact2_v31seasonal150.rds"); ### Contains beta fit data
 agedat=readRDS("ONdat_newKage_to2021-03-02.rds"); ### Contains new age specific known case data for fitting
 agedat$tot<-cumsum(rowSums(agedat[,3:7]))
 regiondat=readRDS("ONdat_casesbyPHU_to2021-03-01.rds"); ### Contains new region specific known case data for fitting
-#regiondat<-regiondat[,c(1, 1+unique(regionid$phunum[order(regionid$census.region)]))] #Reorder to match the ordering of PHU from regionid (based on census region numbering)
 regiondat$tot<-cumsum(rowSums(regiondat[,2:35]))
 
 omgdat<-readRDS("mobilitydat_REAL_to2021-02-27_V4.rds") #read in mobility data
