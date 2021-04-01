@@ -5,9 +5,19 @@ Simulation, model-fitting and visualization code for manuscript by Fair, Karatay
 
 All data needed to run simulations are included in the "InputFiles" folder.
 
+cmat_data_weighted.rds contains contact matrices; data adapted from https://github.com/kieshaprem/synthetic-contact-matrices
+
+PHUtoREGIONlinker_numeric.rds contains a key for linking Ontario's census divisions (regions) to the Public Health Units (PHU) they belong to
+
+Ondat_newKage_to2021-03-02.rds contains data on new reported COVID-19 cases in Ontario, grouped by age-class (data from https://covid-19.ontario.ca/data)
+
+ONdat_casesbyPHU_to2021-03-01.rs contains data on new reported COVID-19 cases in Ontario, grouped by PHU (data from https://covid-19.ontario.ca/data)
+
+mobilitydat-REAL_to2021-02-27_v4.rds contains data on mobility trends for retail and recreational locations (adapted from https://www.google.com/covid19/mobility/)
+
 covidHierData.rds contains the following objects (note that some are artefacts of a previous version of the model retained within the file to preseve the dimensions of certain data structures - these are denoted with an asterisk):
 
-• Distd50*: the proportion of people voluntarily distancing by day 21 of the outbreak, data from https://news.gallup.com/opinion/gallup/298310/americans-step-social-distancing-even-further.aspx
+• Distd50*: the proportion of people voluntarily distancing by day 21 of the outbreak (data from https://news.gallup.com/opinion/gallup/298310/americans-step-social-distancing-even-further.aspx)
 
 • testRat: estimate of the ratio of true infections to positive tests made by A Lachmann, Correcting under-reported covid-19 case numbers. medRxiv (2020).
 
@@ -15,9 +25,9 @@ covidHierData.rds contains the following objects (note that some are artefacts o
 
 • storeSatIncTrm.65*: Pre-calculated values of baseline transmission probability (across values of c and xi) which leads to 65% of population being infected after 1 year without mitigation
 
-• caseCtBin*: the daily number of reported cases, with smaller counties grouped by population density; data from https://www.publichealthontario.ca/en/data-and-analysis/infectious-disease/covid-19-data-surveillance/covid-19-data-tool
+• caseCtBin*: the daily number of reported cases, with smaller counties grouped by population density (data from https://www.publichealthontario.ca/en/data-and-analysis/infectious-disease/covid-19-data-surveillance/covid-19-data-tool)
 
 • testT3.1*: function giving the (smoothed) testing intensity on any given day t from the day the 50th case positive case was reported (i.e., t=0 if fewer than 50 cumulative cases reported). These values increase from 0 to 1following the (smoothed) relative increase in number of tests taken each day based on data from https://www.ontario.ca/page/2019-novel-coronavirussection-0
 
-• CountyPopDensities*: population densities in each county, data from: https://www12.statcan.gc.ca/health-sante/82-228/details/page.cfm?Lang=E&Tab=1&Geo1=HR&Code1=3570&Geo2=PR&Code2=35&Data=Rate&SearchText=York%20Regional%20Health%20Unit&SearchType=Contains&SearchPR=01&B1=All&Custom=&B2=All&B3=All
+• CountyPopDensities*: population densities in each county (data from https://www12.statcan.gc.ca/health-sante/82-228/details/page.cfm?Lang=E&Tab=1&Geo1=HR&Code1=3570&Geo2=PR&Code2=35&Data=Rate&SearchText=York%20Regional%20Health%20Unit&SearchType=Contains&SearchPR=01&B1=All&Custom=&B2=All&B3=All)
 
