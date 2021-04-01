@@ -3,6 +3,8 @@ This repository is currently under construction.
 
 Simulation, model-fitting and visualization code for manuscript by Fair, Karatayev, Anand, and Bauch (2021).
 
+All data needed to run simulations are included in the "InputFiles" folder.
+
 covidHierData.rds contains the following objects (note that some are artefacts of a previous version of the model retained within the file to preseve the dimensions of certain data structures - these are denoted with an asterisk):
 
 • Distd50*: the proportion of people voluntarily distancing by day 21 of the outbreak, data from https://news.gallup.com/opinion/gallup/298310/americans-step-social-distancing-even-further.aspx
