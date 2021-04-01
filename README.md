@@ -48,9 +48,11 @@ Simulation, model-fitting and visualization code for manuscript by Fair, Karatay
 **System & hardware requirements**
 
 Windows 10 Pro Version 2004
+
 Sufficient RAM to support storage of data structures during simulations
 
 **Installation guide**
 
 R Version 4.0.3 https://www.r-project.org/
+
 R Studio Version 1.2.5019 (IDE for R) https://rstudio.com/
