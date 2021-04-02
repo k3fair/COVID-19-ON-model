@@ -57,6 +57,8 @@ All data needed to run scripts are included in the "InputFiles" folder, with the
 
 **Installation guides**
 
+All software should install within a few minutes on a standard computer.
+
  * R Version 4.0.3 https://www.r-project.org/
 
  * R Studio Version 1.2.5019 (IDE for R) https://rstudio.com/ 
