@@ -33,7 +33,7 @@ All data needed to run scripts are included in the "InputFiles" folder, with the
 
 * mobilitydat-REAL_to2021-02-27_v4.rds contains data on mobility trends for retail and recreational locations (adapted from https://www.google.com/covid19/mobility/).
 
-* covidHierData.rds contains the following objects (note that some are artefacts of a previous version of the model retained within the file to preseve the dimensions of certain data structures - these are denoted with an asterisk):
+* covidHierData.rds contains several objects. Some are artefacts of a previous version of the model (https://github.com/VadimKar/COVID-19-Hierarchy-model) retained within the file to preseve the dimensions of certain data structures - these are denoted with an asterisk. Objects are as follows:
 
   * Distd50*: the proportion of people voluntarily distancing by day 21 of the outbreak (data from https://news.gallup.com/opinion/gallup/298310/americans-step-social-distancing-even-further.aspx)
 
