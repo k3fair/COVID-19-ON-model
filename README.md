@@ -37,7 +37,7 @@ All data needed to run scripts are included in the "InputFiles" folder, with the
 
   * Distd50*: the proportion of people voluntarily distancing by day 21 of the outbreak (data from https://news.gallup.com/opinion/gallup/298310/americans-step-social-distancing-even-further.aspx)
 
-  * testRat: estimate of the ratio of true infections to positive tests made by A Lachmann, Correcting under-reported covid-19 case numbers. medRxiv (2020).
+  * testRat: estimate of the ratio of true infections to positive tests (from https://doi.org/10.1101/2020.03.14.20036178)
 
   * Msave: Travel matrix, where entries are numbers of commuters between a home and workplace county. Data from Statistics canada, 2016 census, catalogue no. 98-400-x2016391.
 
