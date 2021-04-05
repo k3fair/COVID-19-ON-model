@@ -12,11 +12,11 @@ All data needed to run scripts are included in the "InputFiles" folder, with the
 
 * covidHierV46_2Github_basesim.R evaluates output from covidHierV46_2Github_parmfit.R to identify parameter sets resulting in the best fit to data, runs simulations using those parameter sets, and outputs files containing the results of that identification and simulation.
 
-* covidHierV46_2Github_firstcounterfactual.R runs simulations for counterfactuals covering the first time period (10 March 2020 to 15 August 2020).
+* covidHierV46_2Github_firstcounterfactual.R runs simulations for counterfactuals covering the first time period (10 March 2020 to 15 August 2020), outputs results of these simulations.
 
-* covidHierV46_2Github_secondcounterfactual.R runs simulations for counterfactuals covering the second time period (12 June 2020 to 28 February 2021).
+* covidHierV46_2Github_secondcounterfactual.R runs simulations for counterfactuals covering the second time period (12 June 2020 to 28 February 2021), outputs results of these simulations.
 
-* covidHierV46_2Github_indexp.R runs simulations for our model extension to consider individual-level NPI adherence during first time period (10 March 2020 to 15 August 2020). 
+* covidHierV46_2Github_indexp.R runs simulations for our model extension to consider individual-level NPI adherence during first time period (10 March 2020 to 15 August 2020), outputs results of these simulations.
 
 
 **Input Files**
