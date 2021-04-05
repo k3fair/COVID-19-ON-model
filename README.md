@@ -57,7 +57,7 @@ All data needed to run scripts are included in the "InputFiles" folder, with the
 
 **Installation guides**
 
-All software should install within a few minutes on a standard computer.
+All software should install within a few minutes on a standard computer, the versions listed here are those the scripts have been tested on.
 
  * R Version 4.0.3 https://www.r-project.org/
 
