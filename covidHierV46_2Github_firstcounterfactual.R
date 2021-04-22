@@ -1,5 +1,5 @@
 #     Script runs simulations for counterfactuals for 10 March 2020 to 15 August 2020 (presence/absence of closures and/or NPI adherence)
-#     Copyright (C) 2021  Kathyrn R Fair
+#     Copyright (C) 2021  Kathyrn R Fair, Vadim A Karatayev
 # 
 #     This program is free software: you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
