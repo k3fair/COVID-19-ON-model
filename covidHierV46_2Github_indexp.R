@@ -1,5 +1,5 @@
 #     Script runs simulations for model extension using individual-level differences in NPI adherence
-#     Copyright (C) 2021  Kathyrn R Fair
+#     Copyright (C) 2021  Kathyrn R Fair, Vadim A Karatayev
 # 
 #     This program is free software: you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
