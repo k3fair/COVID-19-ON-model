@@ -6,34 +6,34 @@ To run a set of simulations, make all required option selections (detailed withi
 
 All data needed to run scripts are included in the "InputFiles" folder, with the exception of the parameter set inputs for covidHierV46_2Github_basesim.R, as the large number of files makes this infeasible. However, such parameter sets can be generated using covidHierV46_2Github_parmfit.R. Expected runtime varies between scripts, but an individual simulation should run within 1 minute.
 
-**Scripts**
+## Scripts
 
-* covidHierV46_2Github_parmfit.R runs fitting procedure for obtaining parameter sets, outputs files containing the best parameter set as determined by that run of the fitting algorithms.
+* **covidHierV46_2Github_parmfit.R** runs fitting procedure for obtaining parameter sets, outputs files containing the best parameter set as determined by that run of the fitting algorithms.
 
-* covidHierV46_2Github_basesim.R evaluates output from covidHierV46_2Github_parmfit.R to identify parameter sets resulting in the best fit to data, runs simulations using those parameter sets, and outputs files containing the results of that identification and simulation.
+* **covidHierV46_2Github_basesim.R** evaluates output from covidHierV46_2Github_parmfit.R to identify parameter sets resulting in the best fit to data, runs simulations using those parameter sets, and outputs files containing the results of that identification and simulation.
 
-* covidHierV46_2Github_firstcounterfactual.R runs simulations for counterfactuals covering the first time period (10 March 2020 to 15 August 2020), outputs results of these simulations. Can be used to reproduce results shown in Figure 2.
+* **covidHierV46_2Github_firstcounterfactual.R** runs simulations for counterfactuals covering the first time period (10 March 2020 to 15 August 2020), outputs results of these simulations. Can be used to reproduce results shown in Figure 2.
 
-* covidHierV46_2Github_secondcounterfactual.R runs simulations for counterfactuals covering the second time period (12 June 2020 to 28 February 2021), outputs results of these simulations. Can be used to reproduce results shown in Figure 3.
+* **covidHierV46_2Github_secondcounterfactual.R** runs simulations for counterfactuals covering the second time period (12 June 2020 to 28 February 2021), outputs results of these simulations. Can be used to reproduce results shown in Figure 3.
 
-* covidHierV46_2Github_indexp.R runs simulations for our model extension to consider individual-level NPI adherence during first time period (10 March 2020 to 15 August 2020), outputs results of these simulations. Can be used to reproduce results shown in Figure 4.
+* **covidHierV46_2Github_indexp.R** runs simulations for our model extension to consider individual-level NPI adherence during first time period (10 March 2020 to 15 August 2020), outputs results of these simulations. Can be used to reproduce results shown in Figure 4.
 
 
-**Input Files**
+## Input Files
 
-* simsFITPARMS_v46v2phuNUDGE_V2.rds contains best-fit parameter sets (generated from covidHierV46_2Github_parmfit.R and covidHierV46_2Github_basesim.R), used for all counterfactual simulations
+* **simsFITPARMS_v46v2phuNUDGE_V2.rds** contains best-fit parameter sets (generated from covidHierV46_2Github_parmfit.R and covidHierV46_2Github_basesim.R), used for all counterfactual simulations
 
-* cmat_data_weighted.rds contains contact matrices; data adapted from https://github.com/kieshaprem/synthetic-contact-matrices
+* **cmat_data_weighted.rds** contains contact matrices; data adapted from https://github.com/kieshaprem/synthetic-contact-matrices
 
-* PHUtoREGIONlinker_numeric.rds contains a key for linking Ontario's census divisions (regions) to the Public Health Units (PHU) they belong to.
+* **PHUtoREGIONlinker_numeric.rds** contains a key for linking Ontario's census divisions (regions) to the Public Health Units (PHU) they belong to.
 
-* Ondat_newKage_to2021-03-02.rds contains data on new reported COVID-19 cases in Ontario, grouped by age-class (data from https://covid-19.ontario.ca/data).
+* **Ondat_newKage_to2021-03-02.rds** contains data on new reported COVID-19 cases in Ontario, grouped by age-class (data from https://covid-19.ontario.ca/data).
 
-* ONdat_casesbyPHU_to2021-03-01.rs contains data on new reported COVID-19 cases in Ontario, grouped by PHU (data from https://covid-19.ontario.ca/data).
+* **ONdat_casesbyPHU_to2021-03-01.rds** contains data on new reported COVID-19 cases in Ontario, grouped by PHU (data from https://covid-19.ontario.ca/data).
 
-* mobilitydat-REAL_to2021-02-27_v4.rds contains data on mobility trends for retail and recreational locations (adapted from https://www.google.com/covid19/mobility/).
+* **mobilitydat-REAL_to2021-02-27_v4.rds** contains data on mobility trends for retail and recreational locations (adapted from https://www.google.com/covid19/mobility/).
 
-* covidHierData.rds contains several objects. Some are artefacts of a previous version of the model (https://github.com/VadimKar/COVID-19-Hierarchy-model) retained within the file to preseve the dimensions of certain data structures - these are denoted with an asterisk. Objects are as follows:
+* **covidHierData.rds** contains several objects. Some are artefacts of a previous version of the model (https://github.com/VadimKar/COVID-19-Hierarchy-model) retained within the file to preseve the dimensions of certain data structures - these are denoted with an asterisk. Objects are as follows:
 
   * Distd50*: the proportion of people voluntarily distancing by day 21 of the outbreak (data from https://news.gallup.com/opinion/gallup/298310/americans-step-social-distancing-even-further.aspx)
 
@@ -49,13 +49,13 @@ All data needed to run scripts are included in the "InputFiles" folder, with the
 
   * CountyPopDensities*: population densities in each county (data from https://www12.statcan.gc.ca/health-sante/82-228/details/page.cfm?Lang=E&Tab=1&Geo1=HR&Code1=3570&Geo2=PR&Code2=35&Data=Rate&SearchText=York%20Regional%20Health%20Unit&SearchType=Contains&SearchPR=01&B1=All&Custom=&B2=All&B3=All)
 
-**System & hardware requirements**
+## System & hardware requirements
 
  * Windows 10 Pro Version 2004
 
  * Sufficient RAM to support storage of data structures during simulations
 
-**Installation guides**
+## Installation guides
 
 All software should install within a few minutes on a standard computer, the versions listed here are those the scripts have been tested on.
 
