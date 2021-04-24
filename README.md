@@ -19,7 +19,7 @@ All data needed to run scripts are included in the "InputFiles" folder, with the
 * **covidHierV46_2Github_indexp.R** runs simulations for our model extension to consider individual-level NPI adherence during first time period (10 March 2020 to 15 August 2020), outputs results of these simulations. Can be used to reproduce results shown in Figure 4.
 
 
-## Input Files
+## Input files
 
 * **simsFITPARMS_v46v2phuNUDGE_V2.rds** contains best-fit parameter sets (generated from covidHierV46_2Github_parmfit.R and covidHierV46_2Github_basesim.R), used for all counterfactual simulations
 
