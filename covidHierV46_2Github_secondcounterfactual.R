@@ -1,5 +1,5 @@
 #     Script runs simulations for counterfactuals for 12 June 2020 to 28 February 2021 (presence/absence of NPIs in workplaces/schools when they reopen)
-#     Copyright (C) 2021  Kathyrn R Fair, Vadim A Karatayev
+#     Copyright (C) 2021  Kathyrn R Fair
 # 
 #     This program is free software: you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ codeversion<-"v46v2phuNUDGE"
 
 cftype<-"neither"; #Artefact from previous version of code, leave in to avoid error when writing output 
 # Set reopening type; with ("restricted") or without ("unrestricted") NPIs in schools/workplaces
-reopeningtype<-"restricted";
+reopeningtype<-"restricted"; #Not necessary to make a selection here, all scenario selection is done with rocoeff (defined later in script), leave as-is
 
 
 #Read in data on best parameter sets from fitting
