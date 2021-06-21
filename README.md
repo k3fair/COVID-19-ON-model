@@ -1,27 +1,27 @@
 # COVID-19-ON-model
 
-Simulation and model-fitting code for manuscript by Fair, Karatayev, Anand, and Bauch (2021). Model describes SARS-CoV-2 transmission in Ontario, Canada, and associated preprint is posted at https://doi.org/10.1101/2021.03.26.21254421. 
+Simulation and model-fitting code for manuscript by Fair, Karatayev, Anand, and Bauch (2021). Model describes SARS-CoV-2 transmission in Ontario, Canada, and associated preprint is posted at https://doi.org/10.1101/2021.03.26.21254421.
 
 To run a set of simulations, make all required option selections (detailed within each script) and launch script.
 
-All data needed to run scripts are included in the "InputFiles" folder, with the exception of the parameter set inputs for covidHierV46_2Github_basesim.R, as the large number of files makes this infeasible. However, such parameter sets can be generated using covidHierV46_2Github_parmfit.R. Expected runtime varies between scripts, but an individual simulation should run within 1 minute.
+All data needed to run scripts are included in the "InputFiles" folder, with the exception of the parameter set inputs for covidHierV46_2Github_basesim.R, as the large number of files makes this infeasible. However, such parameter sets can be generated using covidHierV48_Github_parmfit.R. Expected runtime varies between scripts, but an individual simulation should run within 1 minute.
 
 ## Scripts
 
-* **covidHierV46_2Github_parmfit.R** runs fitting procedure for obtaining parameter sets, outputs files containing the best parameter set as determined by that run of the fitting algorithms.
+* **covidHierV48_Github_parmfit.R** runs fitting procedure for obtaining parameter sets, outputs files containing the best parameter set as determined by that run of the fitting algorithms.
 
-* **covidHierV46_2Github_basesim.R** evaluates output from covidHierV46_2Github_parmfit.R to identify parameter sets resulting in the best fit to data, runs simulations using those parameter sets, and outputs files containing the results of that identification and simulation.
+* **covidHierV48_Github_basesim.R** evaluates output from covidHierV46_2Github_parmfit.R to identify parameter sets resulting in the best fit to data, runs simulations using those parameter sets, and outputs files containing the results of that identification and simulation.
 
-* **covidHierV46_2Github_firstcounterfactual.R** runs simulations for counterfactuals covering the first time period (10 March 2020 to 15 August 2020), outputs results of these simulations. Can be used to reproduce results shown in Figure 2.
+* **covidHierV48_Github_firstcounterfactual.R** runs simulations for counterfactuals covering the first time period (10 March 2020 to 15 August 2020), outputs results of these simulations. Can be used to reproduce results shown in Figure 2.
 
-* **covidHierV46_2Github_secondcounterfactual.R** runs simulations for counterfactuals covering the second time period (12 June 2020 to 28 February 2021), outputs results of these simulations. Can be used to reproduce results shown in Figure 3.
+* **covidHierV48_Github_secondcounterfactual.R** runs simulations for counterfactuals covering the second time period (12 June 2020 to 28 February 2021), outputs results of these simulations. Can be used to reproduce results shown in Figure 3.
 
-* **covidHierV46_2Github_indexp.R** runs simulations for our model extension to consider individual-level NPI adherence during first time period (10 March 2020 to 15 August 2020), outputs results of these simulations. Can be used to reproduce results shown in Figure 4.
+* **covidHierV48_Github_indexp.R** runs simulations for our model extension to consider individual-level NPI adherence during first time period (10 March 2020 to 15 August 2020), outputs results of these simulations. Can be used to reproduce results shown in Figure 4.
 
 
 ## Input files
 
-* **simsFITPARMS_v46v2phuNUDGE_V2.rds** contains best-fit parameter sets (generated from covidHierV46_2Github_parmfit.R and covidHierV46_2Github_basesim.R), used for all counterfactual simulations
+* **simsFITPARMS_v48.rds** contains best-fit parameter sets (generated from covidHierV46_2Github_parmfit.R and covidHierV46_2Github_basesim.R), used for all counterfactual simulations
 
 * **cmat_data_weighted.rds** contains contact matrices; data adapted from https://github.com/kieshaprem/synthetic-contact-matrices
 
@@ -61,4 +61,4 @@ All software should install within a few minutes on a standard computer, the ver
 
  * R Version 4.0.3 https://www.r-project.org/
 
- * R Studio Version 1.2.5019 (IDE for R) https://rstudio.com/ 
+ * R Studio Version 1.2.5019 (IDE for R) https://rstudio.com/
