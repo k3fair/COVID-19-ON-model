@@ -356,7 +356,7 @@ for (fit in 1:length(file.names))
       #Modify travel probability as needed
       Mn=round(parms[1,"Mfact"]*parms[,-(1:NP)]*(1-diag(L))); diag(Mn)=parms[,"N"]-colSums(Mn); parms[,-(1:NP)]=Mn%*%diag(1/colSums(Mn));
       print(range(parms[,-(1:NP)]))
-reep
+      
       #Implement simulation
       set.seed(seed0+6); Seeds=rnorm(Trun,1e6,1e6);
       for(i in 2:Trun) TS=abind(TS,FUN(TS[,,i-1],closeinappl(parms,TS),gettime(TS),seed=Seeds[i]),along=3);  TS[,"C",]<-apply(TS[,c("Cw","Cs"),],c(1,3),sum);
